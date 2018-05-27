@@ -1,21 +1,22 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 
 # Users
-class User(AbstractUser):
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
     is_player = models.BooleanField(default=False)
     is_coach = models.BooleanField(default=False)
     is_referee = models.BooleanField(default=False)
 class Player(models.Model):
     # name
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
 class Coach(models.Model):
     # name
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
 class Referee(models.Model):
     # name
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
 
 
 class Field(models.Model):

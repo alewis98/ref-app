@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Custom User Model
-AUTH_USER_MODEL = 'scheduler.User'
+AUTH_USER_MODEL = 'auth.User'
 
 
 # Internationalization

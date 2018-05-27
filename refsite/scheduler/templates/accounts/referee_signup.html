@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
-<html>
-    <head>
-        {% block head %}
-        <title>Referee Signup</title>
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}
-        <button type="button" class="btn btn-default">Press Me!</button>
-        {% endblock %}
-    </body>
-</html>
+{% block body %}
+<div class="container">
+    <h1>Register</h1>
+    <h2>Sign up as a referee.</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
