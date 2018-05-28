@@ -103,6 +103,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Custom User Model
 AUTH_USER_MODEL = 'auth.User'
 
+# Email Settings
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
