@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Welcome, {{ user.first_name }}</h1>
+    <p>
+        This is your homepage.
+    </p>
+</div>
+{% endblock %}

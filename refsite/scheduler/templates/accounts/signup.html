@@ -3,11 +3,11 @@
 {% block body %}
 <div class="container">
     <h1>Register</h1>
-    <h2>Sign up as a referee.</h2>
+    <h2>Sign up for an account.</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Submit</button>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
     </form>
 </div>
 {% endblock %}

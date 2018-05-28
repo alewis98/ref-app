@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 
-from . import referee
+from . import account
 
 def home(request):
-    return HttpResponse("hi")
+    return render(request, 'home.html')
 

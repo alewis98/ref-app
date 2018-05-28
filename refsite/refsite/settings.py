@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'scheduler.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'refsite.urls'
@@ -124,5 +125,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+# URLs
+
+LOGOUT_URL = '/accounts/logout/'
+
+LOGIN_URL = '/accounts/login/'
+
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
+LOGIN_EXEMPT_URLS = (
+    r'^accounts/login/$',
+    r'^accounts/logout/$',
+    r'^accounts/signup/$',
+)
+
 
 STATIC_URL = '/static/'

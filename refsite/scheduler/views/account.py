@@ -3,12 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from scheduler.forms import RegistrationForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
-
-# def signup(request):
-#     return render(request, 'accounts/referee_signup.html')
+from django.contrib.auth.decorators import login_required
 
 def signup(request):
-
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid:
@@ -17,7 +14,7 @@ def signup(request):
     else:
         form = RegistrationForm()
         args = {'form': form}
-        return render(request, 'accounts/referee_signup.html', args)
+        return render(request, 'accounts/signup.html', args)
 
 def view_profile(request):
     args = {'user': request.user}
