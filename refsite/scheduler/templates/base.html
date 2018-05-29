@@ -19,18 +19,22 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/accounts/profile/">Account</a>
+                            <a class="nav-link" href="{% url 'accounts:view-profile' %}">Account</a>
                         </li>
                         {% endif %}
                     </ul>
                     <ul class="nav navbar-nav">
                         {% if user.is_authenticated %}
+                        
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #ffc107" href="/accounts/logout">Logout</a>
+                            <a class="nav-link" style="color: #ffc107" href="{% url 'accounts:logout' %}">Logout</a>
                         </li>
+                        {% if user.userprofile.image %}
+                        <img src="{{ user.userprofile.image.url }}" width="40px" height="40px" border="3px">
+                        {% endif %} 
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #ffc107" href="/accounts/login">Login</a>
+                            <a class="nav-link" style="color: #ffc107" href="{% url 'accounts:login' %}">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-warning" href="/accounts/signup/">Register</a>

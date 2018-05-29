@@ -14,10 +14,19 @@
     <a href="/accounts/reset_password" class="btn btn-outline-primary btn-sm">Reset Password</a>
     <a href="/accounts/logout" class="btn btn-outline-primary btn-sm">Logout</a>
     <div style="margin-top: 20px">
-        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-        <h3>{{ user }}</h3>
-        <h3>{{ user.email }}</h3>
+        <div class="row">
+            <div class="col-2">
+                <img src="{{ user.userprofile.image.url }}" width="100px" height="100px">
+            </div>
+            <div class="col">
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                <h3>{{ user }}</h3>
+                <h3>{{ user.email }}</h3>
+                {% if user.userprofile.is_admin %}
+                <a href="/admin/" class="btn btn-outline-success btn-sm">Admin</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
-    
 </div>
 {% endblock %}

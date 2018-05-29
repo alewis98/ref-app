@@ -10,7 +10,8 @@ def signup(request):
         form = RegistrationForm(request.POST)
         if form.is_valid:
             form.save()
-            return redirect('/account')
+            update_session_auth_hash(request, form.user)
+            return redirect("accounts:view-profile")
     else:
         form = RegistrationForm()
         args = {'form': form}

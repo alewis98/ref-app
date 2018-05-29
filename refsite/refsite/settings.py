@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'scheduler',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'scheduler',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +138,14 @@ LOGIN_EXEMPT_URLS = (
     r'^accounts/login/$',
     r'^accounts/logout/$',
     r'^accounts/signup/$',
+    r'^accounts/reset_password/$',
+    r'^accounts/reset_password/done/$',
+    r'^accounts/reset_password/complete/$',
+    r'^accounts/reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
 )
 
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'scheduler/media')
