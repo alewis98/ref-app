@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, PasswordResetForm
-from scheduler.forms import RegistrationForm, EditProfileForm
+from scheduler.forms import RegistrationForm, EditProfileForm, EditUserProfileForm
+from scheduler.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -24,12 +25,21 @@ def view_profile(request):
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
-        if form.is_valid:
+        form2 = EditUserProfileForm(request.POST, instance=request.user.userprofile)
+        if form.is_valid() and form2.is_valid():
             form.save()
-            return redirect('/accounts/profile')
+            data = form2.cleaned_data
+            profile = UserProfile.objects.get(user=request.user)
+            profile.image = data['image']
+            profile.phone_number = data['phone_number']
+            profile.address = data['address']
+            profile.date_of_birth = data['date_of_birth']
+            profile.save()
+            return redirect("accounts:view-profile")
     else:
         form = EditProfileForm(instance=request.user)
-        args = {'form': form}
+        form2 = EditUserProfileForm(instance=request.user.userprofile)
+        args = {'form': form, 'form2': form2}
         return render(request, 'accounts/edit_profile.html', args)
 
 def change_password(request):

@@ -134,6 +134,8 @@ LOGIN_URL = '/accounts/login/'
 
 LOGIN_REDIRECT_URL = '/accounts/profile/'
 
+HOME_URL = '/home/'
+
 LOGIN_EXEMPT_URLS = (
     r'^accounts/login/$',
     r'^accounts/logout/$',
@@ -142,6 +144,7 @@ LOGIN_EXEMPT_URLS = (
     r'^accounts/reset_password/done/$',
     r'^accounts/reset_password/complete/$',
     r'^accounts/reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^home/',
 )
 
 

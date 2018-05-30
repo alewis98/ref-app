@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import *
 from .models import *
 
-models = [Player, Coach, Division, Team, Game]
+models = [Player, Coach, Referee, Division, Team, Game]
 
 for model in models:
     admin.site.register(model)

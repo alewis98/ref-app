@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.db import transaction
+from scheduler.models import *
+from django.forms import ModelForm
 
 
 class RegistrationForm(UserCreationForm):
@@ -41,3 +43,15 @@ class EditProfileForm(UserChangeForm):
             'email',
             'password',
         )
+
+class EditUserProfileForm(ModelForm):
+
+    class Meta:
+        model = UserProfile
+        fields = ['image', 'phone_number', 'address', 'date_of_birth']
+
+class RefereeRegistrationForm(ModelForm):
+
+    class Meta:
+        model = Referee
+        fields = ['grade', 'years_experience', 'is_certified']

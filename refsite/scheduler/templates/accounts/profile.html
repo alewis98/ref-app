@@ -16,12 +16,17 @@
     <div style="margin-top: 20px">
         <div class="row">
             <div class="col-2">
+                {% if user.userprofile.image %}
                 <img src="{{ user.userprofile.image.url }}" width="100px" height="100px">
+                {% endif %}
             </div>
             <div class="col">
                 <h2>{{ user.first_name }} {{ user.last_name }}</h2>
                 <h3>{{ user }}</h3>
-                <h3>{{ user.email }}</h3>
+                <h3>{% if user.email %}{{ user.email }}{% endif %}</h3>
+                <h3>{% if user.userprofile.date_of_birth %}{{ user.userprofile.date_of_birth }}{% endif %}</h3>
+                <h3>{% if user.userprofile.address %}{{ user.userprofile.address }}{% endif %}</h3>
+                <h3>{% if user.userprofile.phone_number %}{{ user.userprofile.phone_number }}{% endif %}</h3>
                 {% if user.userprofile.is_admin %}
                 <a href="/admin/" class="btn btn-outline-success btn-sm">Admin</a>
                 {% endif %}
