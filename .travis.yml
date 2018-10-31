@@ -1,0 +1,17 @@
+language: python
+python:
+- 3.6
+install:
+  pip install -r requirements-travis.txt
+postgres:
+  adapter: postgresql
+  username: postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: 505eb0bc-476c-4139-bd2a-4c5568691bd2
+  app: ref-app
+script:
+  - python manage.py makemigrations
+  - python manage.py migrate --run-syncdb
+- python manage.py test
